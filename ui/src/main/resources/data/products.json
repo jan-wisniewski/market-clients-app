@@ -1,0 +1,242 @@
+[
+  {
+    "name": "BLUZA",
+    "quantity": 1,
+    "price": 40,
+    "category": "ODZIEZ"
+  },
+  {
+    "name": "PLASZCZ",
+    "quantity": 3,
+    "price": 80,
+    "category": "ODZIEZ"
+  },
+  {
+    "name": "SKARPETKI",
+    "quantity": 4,
+    "price": 10,
+    "category": "ODZIEZ"
+  },
+  {
+    "name": "SPODNIE",
+    "quantity": 5,
+    "price": 30,
+    "category": "ODZIEZ"
+  },
+  {
+    "name": "SUKIENKA",
+    "quantity": 1,
+    "price": 40,
+    "category": "ODZIEZ"
+  },
+  {
+    "name": "SWETER",
+    "quantity": 1,
+    "price": 50,
+    "category": "ODZIEZ"
+  },
+  {
+    "name": "KOSZULKA",
+    "quantity": 2,
+    "price": 30,
+    "category": "ODZIEZ"
+  },
+  {
+    "name": "BOKSERKI",
+    "quantity": 2,
+    "price": 10,
+    "category": "ODZIEZ"
+  },
+  {
+    "name": "CZAPKA",
+    "quantity": 3,
+    "price": 10,
+    "category": "ODZIEZ"
+  },
+  {
+    "name": "BERET",
+    "quantity": 3,
+    "price": 15,
+    "category": "ODZIEZ"
+  },
+  {
+    "name": "PӣKA",
+    "quantity": 1,
+    "price": 50,
+    "category": "GOSPODARSTWO_DOMOWE"
+  },
+  {
+    "name": "MISECZKI",
+    "quantity": 2,
+    "price": 20,
+    "category": "GOSPODARSTWO_DOMOWE"
+  },
+  {
+    "name": "WIESZAKI",
+    "quantity": 3,
+    "price": 10,
+    "category": "GOSPODARSTWO_DOMOWE"
+  },
+  {
+    "name": "KUBEK",
+    "quantity": 4,
+    "price": 10,
+    "category": "GOSPODARSTWO_DOMOWE"
+  },
+  {
+    "name": "DREWNIANE LYZKI",
+    "quantity": 2,
+    "price": 15,
+    "category": "GOSPODARSTWO_DOMOWE"
+  },
+  {
+    "name": "KOSZ NA SMIECI",
+    "quantity": 1,
+    "price": 20,
+    "category": "GOSPODARSTWO_DOMOWE"
+  },
+  {
+    "name": "PRZYBORNIK",
+    "quantity": 3,
+    "price": 15,
+    "category": "GOSPODARSTWO_DOMOWE"
+  },
+  {
+    "name": "GRILL",
+    "quantity": 1,
+    "price": 40,
+    "category": "GOSPODARSTWO_DOMOWE"
+  },
+  {
+    "name": "TIMER",
+    "quantity": 4,
+    "price": 10,
+    "category": "GOSPODARSTWO_DOMOWE"
+  },
+  {
+    "name": "LOPATKA SILIKONOWA",
+    "quantity": 5,
+    "price": 10,
+    "category": "GOSPODARSTWO_DOMOWE"
+  },
+  {
+    "name": "CHLEB",
+    "quantity": 1,
+    "price": 5,
+    "category": "ARTYKULY_SPOZYWCZE"
+  },
+  {
+    "name": "BATATY",
+    "quantity": 3,
+    "price": 10,
+    "category": "ARTYKULY_SPOZYWCZE"
+  },
+  {
+    "name": "DYNIA",
+    "quantity": 1,
+    "price": 8,
+    "category": "ARTYKULY_SPOZYWCZE"
+  },
+  {
+    "name": "FASOLA",
+    "quantity": 2,
+    "price": 10,
+    "category": "ARTYKULY_SPOZYWCZE"
+  },
+  {
+    "name": "JECZMIEN",
+    "quantity": 1,
+    "price": 11,
+    "category": "ARTYKULY_SPOZYWCZE"
+  },
+  {
+    "name": "KACZA GRYCZANA",
+    "quantity": 1,
+    "price": 9,
+    "category": "ARTYKULY_SPOZYWCZE"
+  },
+  {
+    "name": "PLATKI OWSIANE",
+    "quantity": 3,
+    "price": 8,
+    "category": "ARTYKULY_SPOZYWCZE"
+  },
+  {
+    "name": "ZIEMNAKI",
+    "quantity": 4,
+    "price": 7,
+    "category": "ARTYKULY_SPOZYWCZE"
+  },
+  {
+    "name": "SOCZEWICA",
+    "quantity": 1,
+    "price": 3,
+    "category": "ARTYKULY_SPOZYWCZE"
+  },
+  {
+    "name": "MIOD",
+    "quantity": 2,
+    "price": 5,
+    "category": "ARTYKULY_SPOZYWCZE"
+  },
+  {
+    "name": "MALAKSER",
+    "quantity": 1,
+    "price": 60,
+    "category": "URZADZENIA_ELEKTRYCZNE"
+  },
+  {
+    "name": "ODKURZACZ",
+    "quantity": 1,
+    "price": 70,
+    "category": "URZADZENIA_ELEKTRYCZNE"
+  },
+  {
+    "name": "TOSTER",
+    "quantity": 1,
+    "price": 50,
+    "category": "URZADZENIA_ELEKTRYCZNE"
+  },
+  {
+    "name": "GOFROWNICA",
+    "quantity": 1,
+    "price": 40,
+    "category": "URZADZENIA_ELEKTRYCZNE"
+  },
+  {
+    "name": "GOLARKA",
+    "quantity": 1,
+    "price": 50,
+    "category": "URZADZENIA_ELEKTRYCZNE"
+  },
+  {
+    "name": "ZELAZKO",
+    "quantity": 1,
+    "price": 60,
+    "category": "URZADZENIA_ELEKTRYCZNE"
+  },
+  {
+    "name": "PRALKA",
+    "quantity": 1,
+    "price": 100,
+    "category": "URZADZENIA_ELEKTRYCZNE"
+  },
+  {
+    "name": "KOMPUTER",
+    "quantity": 1,
+    "price": 110,
+    "category": "URZADZENIA_ELEKTRYCZNE"
+  },
+  {
+    "name": "LAPTOP",
+    "quantity": 1,
+    "price": 90,
+    "category": "URZADZENIA_ELEKTRYCZNE"
+  },
+  {
+    "name": "PRASOWNICA",
+    "quantity": 1,
+    "price": 40,
+    "category": "URZADZENIA_ELEKTRYCZNE"
+  }
+]

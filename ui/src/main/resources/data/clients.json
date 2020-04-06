@@ -1,0 +1,107 @@
+[
+  {
+    "name": "JAN",
+    "surname": "KOWAL",
+    "age": 20,
+    "cash": 200,
+    "preferences": 124
+  },
+  {
+    "name": "MAGDALENA",
+    "surname": "MALINOWSKA",
+    "age": 31,
+    "cash": 200,
+    "preferences": 13
+  },
+  {
+    "name": "ANIA",
+    "surname": "MALINOWSKA",
+    "age": 26,
+    "cash": 260,
+    "preferences": 2
+  },
+  {
+    "name": "ARTUR",
+    "surname": "SKOWROÑSKI",
+    "age": 42,
+    "cash": 310,
+    "preferences": 1
+  },
+  {
+    "name": "ZBIGNIEW",
+    "surname": "GRABOWSKI",
+    "age": 23,
+    "cash": 215,
+    "preferences": 14
+  },
+  {
+    "name": "ALEKSANDRA",
+    "surname": "BUROÑ",
+    "age": 59,
+    "cash": 412,
+    "preferences": 124
+  },
+  {
+    "name": "JANUSZ",
+    "surname": "ZAJDENC",
+    "age": 38,
+    "cash": 330,
+    "preferences": 12
+  },
+  {
+    "name": "MARLENA",
+    "surname": "ROMAÑSKA",
+    "age": 33,
+    "cash": 290,
+    "preferences": 123
+  },
+  {
+    "name": "MA£GORZATA",
+    "surname": "KARASZEWSKA",
+    "age": 26,
+    "cash": 330,
+    "preferences": 3
+  },
+  {
+    "name": "WIOLETTA",
+    "surname": "JAWOREK",
+    "age": 28,
+    "cash": 160,
+    "preferences": 34
+  },
+  {
+    "name": "MARCIN",
+    "surname": "WIŒNIEWSKI",
+    "age": 14,
+    "cash": 240,
+    "preferences": 123
+  },
+  {
+    "name": "KAMIL",
+    "surname": "STÊPIEÑ",
+    "age": 51,
+    "cash": 290,
+    "preferences": 14
+  },
+  {
+    "name": "TOMASZ",
+    "surname": "ZAWADZKI",
+    "age": 46,
+    "cash": 320,
+    "preferences": 34
+  },
+  {
+    "name": "WOJCIECH",
+    "surname": "ZAKRZEWSKI",
+    "age": 64,
+    "cash": 330,
+    "preferences": 12
+  },
+  {
+    "name": "ANDRZEJ",
+    "surname": "M£YNARSKI",
+    "age": 38,
+    "cash": 120,
+    "preferences": 124
+  }
+]
