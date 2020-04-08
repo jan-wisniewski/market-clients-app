@@ -4,7 +4,7 @@
     "surname": "KOWAL",
     "age": 20,
     "cash": 200,
-    "preferences": 124
+    "preferences": 24
   },
   {
     "name": "MAGDALENA",
@@ -22,7 +22,7 @@
   },
   {
     "name": "ARTUR",
-    "surname": "SKOWROÑSKI",
+    "surname": "SKOWRONSKI",
     "age": 42,
     "cash": 310,
     "preferences": 1
@@ -36,7 +36,7 @@
   },
   {
     "name": "ALEKSANDRA",
-    "surname": "BUROÑ",
+    "surname": "BURON",
     "age": 59,
     "cash": 412,
     "preferences": 124
@@ -50,13 +50,13 @@
   },
   {
     "name": "MARLENA",
-    "surname": "ROMAÑSKA",
+    "surname": "ROMANSKA",
     "age": 33,
     "cash": 290,
     "preferences": 123
   },
   {
-    "name": "MA£GORZATA",
+    "name": "MALGORZATA",
     "surname": "KARASZEWSKA",
     "age": 26,
     "cash": 330,
@@ -71,14 +71,14 @@
   },
   {
     "name": "MARCIN",
-    "surname": "WIŒNIEWSKI",
+    "surname": "WISNIEWSKI",
     "age": 14,
     "cash": 240,
     "preferences": 123
   },
   {
     "name": "KAMIL",
-    "surname": "STÊPIEÑ",
+    "surname": "STEPIEN",
     "age": 51,
     "cash": 290,
     "preferences": 14
@@ -99,7 +99,7 @@
   },
   {
     "name": "ANDRZEJ",
-    "surname": "M£YNARSKI",
+    "surname": "MLYNARSKI",
     "age": 38,
     "cash": 120,
     "preferences": 124
