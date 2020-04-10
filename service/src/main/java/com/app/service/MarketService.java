@@ -28,10 +28,26 @@ public class MarketService {
         this.purchases = init();
     }
 
+    public Map<Client, List<Product>> getPurchases() {
+        return purchases;
+    }
+
     public Map<Client, List<Product>> init() {
         Map<Client, List<Product>> map = new HashMap<>();
         CLIENTS.forEach(c -> map.put(c, prepareUserBoughtProducts(c, userPreferences(c))));
         return map;
+    }
+
+    public String showAllProducts() {
+        return PRODUCTS.stream()
+                .map(p -> p.getName()+" ("+p.getCategory()+") - "+p.getPrice())
+                .collect(Collectors.joining("\n"));
+    }
+
+    public String showAllClients(){
+        return CLIENTS.stream()
+                .map(c -> c.getName()+" "+c.getSurname()+" ("+c.getAge()+"), CASH: " +c.getCash())
+                .collect(Collectors.joining("\n"));
     }
 
     //[4] Przygotuj zestawienie kategorii, w którym umieścisz nazwy kategorii
@@ -72,7 +88,7 @@ public class MarketService {
     }
 
     //[3] Przygotuj zestawienie produktów, które posiada informacje na temat
-    //produktu
+    //produktu oraz ile razy był wybierany przez wszystkich klientów.
     public Map<Product, Long> showProductsStatistics() {
         return purchases.entrySet().stream()
                 .flatMap(e -> e.getValue().stream())
@@ -104,17 +120,6 @@ public class MarketService {
                 .max(Map.Entry.comparingByValue())
                 .orElseThrow()
                 .getKey();
-    }
-
-    public String showPurchases() {
-        return purchases.entrySet()
-                .stream()
-                .map(e -> showClientInfo(e.getKey()) + "\nPRODCUCTS: " + e.getValue()
-                        .stream()
-                        .map(p -> p.getName() + " (" + p.getCategory() + "), price:" + p.getPrice())
-                        .collect(Collectors.joining("\n"))
-                )
-                .collect(Collectors.joining("\n\n"));
     }
 
     private String showClientInfo(Client c) {
