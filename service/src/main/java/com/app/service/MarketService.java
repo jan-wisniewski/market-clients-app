@@ -2,6 +2,7 @@ package com.app.service;
 
 import com.app.persistence.converters.impl.ClientsJsonConverter;
 import com.app.persistence.converters.impl.ProductsJsonConverter;
+import com.app.persistence.enums.Category;
 import com.app.persistence.models.Client;
 import com.app.persistence.models.Product;
 import com.app.service.exceptions.MarketServiceException;
@@ -11,6 +12,7 @@ import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -28,10 +30,80 @@ public class MarketService {
 
     public Map<Client, List<Product>> init() {
         Map<Client, List<Product>> map = new HashMap<>();
-        for (Client client : CLIENTS) {
-            map.put(client, prepareUserBoughtProducts(client, userPreferences(client)));
-        }
+        CLIENTS.forEach(c -> map.put(c, prepareUserBoughtProducts(c, userPreferences(c))));
         return map;
+    }
+
+    //[4] Przygotuj zestawienie kategorii, w którym umieścisz nazwy kategorii
+    //posortowane malejąco według popularności ich wybierania.
+    public Map<Category, Long> showCategoriesStatistics() {
+        return purchases.entrySet().stream()
+                .flatMap(p -> p.getValue().stream())
+                .collect(Collectors.groupingBy(
+                        Product::getCategory,
+                        Collectors.counting()
+                ))
+                .entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (s1,s2) -> s1,
+                        LinkedHashMap::new
+                ));
+    }
+
+    //[3] podaj dane produktu najczęściej kupowany
+    public Product showMostOftenBoughtProduct() {
+        return showProductsStatistics().entrySet()
+                .stream()
+                .max(Map.Entry.comparingByValue())
+                .orElseThrow()
+                .getKey();
+    }
+
+    //[3] podaj dane produktu najrzadziej kupowany
+    public Product showLeastOftenBoughtProduct() {
+        return showProductsStatistics().entrySet()
+                .stream()
+                .min(Map.Entry.comparingByValue())
+                .orElseThrow()
+                .getKey();
+    }
+
+    //[3] Przygotuj zestawienie produktów, które posiada informacje na temat
+    //produktu
+    public Map<Product, Long> showProductsStatistics() {
+        return purchases.entrySet().stream()
+                .flatMap(e -> e.getValue().stream())
+                .collect(Collectors.groupingBy(Function.identity(),
+                        Collectors.counting()));
+    }
+
+    //[2] Wyświetl dane klienta, który zakupił produkty o łącznie najwyższej wartości.
+    public Client whoSpentTheMost() {
+        return purchases.entrySet().stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        e -> calculateValueOfProducts(e.getValue()),
+                        (s1, s2) -> s1
+                )).entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .orElseThrow()
+                .getKey();
+    }
+
+    //[1] Wyświetl dane klienta, który zakupił najwięcej produktów.
+    public Client whoBoughtTheMost() {
+        return purchases.entrySet().stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        e -> e.getValue().size()
+                ))
+                .entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .orElseThrow()
+                .getKey();
     }
 
     public String showPurchases() {
@@ -71,6 +143,10 @@ public class MarketService {
                 .orElseThrow();
     }
 
+    private double calculateProductRatio(Product p) {
+        return p.getPrice().doubleValue() / p.getQuantity();
+    }
+
     private List<Product> prepareUserBoughtProducts(Client client, List<Long> categoryID) {
         if (categoryID == null) {
             throw new MarketServiceException("CategoryID is null");
@@ -88,11 +164,7 @@ public class MarketService {
         return totalProducts;
     }
 
-    private double calculateProductRatio(Product p) {
-        return p.getPrice().doubleValue() / p.getQuantity();
-    }
-
-    private List<Product> buyProductsFromCategory(Long id, BigDecimal cash) {
+    public List<Product> buyProductsFromCategory(Long id, BigDecimal cash) {
         List<Product> productsFromCategory = PRODUCTS.stream()
                 .filter(p -> p.getCategory().name().equals(findPreferencesById(id)))
                 .sorted(Comparator.comparing(this::calculateProductRatio))
