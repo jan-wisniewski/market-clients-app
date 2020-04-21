@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -20,11 +21,12 @@ public class MarketService {
     private final List<Client> CLIENTS;
     private final List<Product> PRODUCTS;
     private Map<Client, List<Product>> purchases;
-    private final String PREFERENCES_PATH = "./resources/data/preferences.txt";
+    private final Map<Long, String> PREFERENCES;
 
-    public MarketService(String clientsFile, String productsFile) {
+    public MarketService(String clientsFile, String productsFile, String preferencesFile) {
         CLIENTS = new ClientsJsonConverter(clientsFile).fromJson().orElseThrow();
         PRODUCTS = new ProductsJsonConverter(productsFile).fromJson().orElseThrow();
+        PREFERENCES = readCategoriesFromString(readFile(preferencesFile));
         this.purchases = init();
     }
 
@@ -34,19 +36,19 @@ public class MarketService {
 
     public Map<Client, List<Product>> init() {
         Map<Client, List<Product>> map = new HashMap<>();
-        CLIENTS.forEach(c -> map.put(c, prepareUserBoughtProducts(c, userPreferences(c))));
+        CLIENTS.forEach(c -> map.put(c, buyProductsForClient(c, userPreferences(c))));
         return map;
     }
 
     public String showAllProducts() {
         return PRODUCTS.stream()
-                .map(p -> p.getName()+" ("+p.getCategory()+") - "+p.getPrice())
+                .map(p -> p.getName() + " (" + p.getCategory() + ") - " + p.getPrice())
                 .collect(Collectors.joining("\n"));
     }
 
-    public String showAllClients(){
+    public String showAllClients() {
         return CLIENTS.stream()
-                .map(c -> c.getName()+" "+c.getSurname()+" ("+c.getAge()+"), CASH: " +c.getCash())
+                .map(c -> c.getName() + " " + c.getSurname() + " (" + c.getAge() + "), CASH: " + c.getCash())
                 .collect(Collectors.joining("\n"));
     }
 
@@ -64,7 +66,7 @@ public class MarketService {
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,
                         Map.Entry::getValue,
-                        (s1,s2) -> s1,
+                        (s1, s2) -> s1,
                         LinkedHashMap::new
                 ));
     }
@@ -122,16 +124,6 @@ public class MarketService {
                 .getKey();
     }
 
-    private String showClientInfo(Client c) {
-        if (c == null) {
-            throw new MarketServiceException("Client is null");
-        }
-        return c.getName() + " "
-                + c.getSurname() +
-                ", cash: " + c.getCash() +
-                ", preferences: " + showClientPreferences(userPreferences(c));
-    }
-
     private String showClientPreferences(List<Long> categoryID) {
         if (categoryID == null) {
             throw new MarketServiceException("Category ID is null");
@@ -152,15 +144,15 @@ public class MarketService {
         return p.getPrice().doubleValue() / p.getQuantity();
     }
 
-    private List<Product> prepareUserBoughtProducts(Client client, List<Long> categoryID) {
-        if (categoryID == null) {
+    private List<Product> buyProductsForClient(Client client, List<Long> categoriesID) {
+        if (categoriesID == null) {
             throw new MarketServiceException("CategoryID is null");
         }
         BigDecimal clientCash = client.getCash();
         List<Product> totalProducts = new ArrayList<>();
         List<Product> productsFromCategory;
-        for (Long aLong : categoryID) {
-            productsFromCategory = buyProductsFromCategory(aLong, clientCash);
+        for (Long categoryID : categoriesID) {
+            productsFromCategory = buyProductsFromCategory(categoryID, clientCash);
             if (productsFromCategory.size() != 0) {
                 totalProducts.addAll(productsFromCategory);
                 clientCash = clientCash.subtract(calculateValueOfProducts(productsFromCategory));
@@ -169,19 +161,20 @@ public class MarketService {
         return totalProducts;
     }
 
-    public List<Product> buyProductsFromCategory(Long id, BigDecimal cash) {
-        List<Product> productsFromCategory = PRODUCTS.stream()
-                .filter(p -> p.getCategory().name().equals(findPreferencesById(id)))
-                .sorted(Comparator.comparing(this::calculateProductRatio))
-                .collect(Collectors.toList());
-        BigDecimal clientCash = cash;
+    private List<Product> buyProductsFromCategory(Long categoryID, BigDecimal cash) {
+        AtomicReference<BigDecimal> sum = new AtomicReference<>(BigDecimal.ZERO);
         List<Product> boughtProducts = new ArrayList<>();
-        for (Product p : productsFromCategory) {
-            if (p.getPrice().compareTo(clientCash) <= 0) {
-                boughtProducts.add(p);
-                clientCash = clientCash.subtract(p.getPrice());
-            }
-        }
+        PRODUCTS
+                .stream()
+                .filter(p -> p.getCategory().name().equals(findPreferencesById(categoryID)))
+                .sorted(Comparator.comparing(this::calculateProductRatio))
+                .collect(Collectors.toList())
+                .forEach(product -> {
+                    if (sum.get().add(product.getPrice()).compareTo(cash) <= 0) {
+                        boughtProducts.add(product);
+                        sum.set(sum.get().add(product.getPrice()));
+                    }
+                });
         return boughtProducts;
     }
 
@@ -199,8 +192,7 @@ public class MarketService {
     }
 
     private String findPreferencesById(long id) {
-        return readCategoriesFromString(readFile(PREFERENCES_PATH))
-                .get(id);
+        return PREFERENCES.get(id);
     }
 
     private Map<Long, String> readCategoriesFromString(String content) {

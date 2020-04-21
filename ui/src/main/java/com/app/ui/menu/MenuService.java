@@ -2,6 +2,8 @@ package com.app.ui.menu;
 
 import com.app.service.MarketService;
 import com.app.ui.user_data.UserDataService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -23,7 +25,7 @@ public class MenuService {
                 System.out.println("8. Product that was most often bought");
                 System.out.println("9. Product categories statistics");
                 int option = UserDataService.getInteger("Choose option");
-                switch (option){
+                switch (option) {
                     case 0 -> {
                         System.out.println("Goodbye");
                         return;
@@ -38,22 +40,22 @@ public class MenuService {
                     case 8 -> option8();
                     case 9 -> option9();
                 }
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
     }
 
     private void option9() {
-        System.out.println(marketService.showCategoriesStatistics());
+        System.out.println(toJson(marketService.showCategoriesStatistics()));
     }
 
     private void option8() {
-        System.out.println(marketService.showMostOftenBoughtProduct());
+        System.out.println(toJson(marketService.showMostOftenBoughtProduct()));
     }
 
     private void option7() {
-        System.out.println(marketService.showLeastOftenBoughtProduct());
+        System.out.println(toJson(marketService.showLeastOftenBoughtProduct()));
     }
 
     private void option6() {
@@ -61,11 +63,11 @@ public class MenuService {
     }
 
     private void option5() {
-        System.out.println(marketService.whoSpentTheMost());
+        System.out.println(toJson(marketService.whoSpentTheMost()));
     }
 
     private void option4() {
-        System.out.println(marketService.whoBoughtTheMost());
+        System.out.println(toJson(marketService.whoBoughtTheMost()));
     }
 
     private void option3() {
@@ -78,6 +80,13 @@ public class MenuService {
 
     private void option1() {
         System.out.println(marketService.showAllClients());
+    }
+
+    private <T> String toJson(T item) {
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
+        return gson.toJson(item);
     }
 
 }
