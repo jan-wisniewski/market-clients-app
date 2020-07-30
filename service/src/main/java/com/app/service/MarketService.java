@@ -52,8 +52,6 @@ public class MarketService {
                 .collect(Collectors.joining("\n"));
     }
 
-    //[4] Przygotuj zestawienie kategorii, w którym umieścisz nazwy kategorii
-    //posortowane malejąco według popularności ich wybierania.
     public Map<Category, Long> showCategoriesStatistics() {
         return purchases.entrySet().stream()
                 .flatMap(p -> p.getValue().stream())
@@ -71,7 +69,6 @@ public class MarketService {
                 ));
     }
 
-    //[3] podaj dane produktu najczęściej kupowany
     public Product showMostOftenBoughtProduct() {
         return showProductsStatistics().entrySet()
                 .stream()
