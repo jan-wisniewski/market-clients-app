@@ -1,0 +1,16 @@
+[
+  {
+    "name": "JAN",
+    "surname": "KOWAL",
+    "age": 20,
+    "cash": 1200,
+    "preferences": 34
+  },
+  {
+    "name": "MAGDALENA",
+    "surname": "MALINOWSKA",
+    "age": 31,
+    "cash": 1000,
+    "preferences": 4
+  }
+]

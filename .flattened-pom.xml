@@ -12,13 +12,13 @@
     <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.site.plugin.version>3.9.0</maven.site.plugin.version>
-    <maven.compiler.source>13</maven.compiler.source>
+    <maven.compiler.source>14</maven.compiler.source>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <maven.assembly.plugin.version>3.2.0</maven.assembly.plugin.version>
     <revision>1.0</revision>
     <flatten.maven.plugin.version>1.2.1</flatten.maven.plugin.version>
     <lombok.version>1.18.12</lombok.version>
-    <maven.compiler.target>13</maven.compiler.target>
+    <maven.compiler.target>14</maven.compiler.target>
     <maven.enforcer.plugin.version>3.0.0-M3</maven.enforcer.plugin.version>
   </properties>
   <dependencyManagement>

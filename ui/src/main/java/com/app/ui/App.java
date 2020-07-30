@@ -3,10 +3,6 @@ package com.app.ui;
 import com.app.service.MarketService;
 import com.app.ui.menu.MenuService;
 
-import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
-
 public class App {
     public static void main(String[] args) {
         try {

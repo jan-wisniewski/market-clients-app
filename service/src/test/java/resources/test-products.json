@@ -1,0 +1,20 @@
+[
+  {
+    "name": "CZAPKA",
+    "quantity": 3,
+    "price": 10,
+    "category": "ODZIEZ"
+  },
+  {
+    "name": "TIMER",
+    "quantity": 4,
+    "price": 10,
+    "category": "GOSPODARSTWO_DOMOWE"
+  },
+  {
+    "name": "LOPATKA SILIKONOWA",
+    "quantity": 5,
+    "price": 10,
+    "category": "GOSPODARSTWO_DOMOWE"
+  }
+]

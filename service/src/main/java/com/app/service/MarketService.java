@@ -80,7 +80,6 @@ public class MarketService {
                 .getKey();
     }
 
-    //[3] podaj dane produktu najrzadziej kupowany
     public Product showLeastOftenBoughtProduct() {
         return showProductsStatistics().entrySet()
                 .stream()
@@ -89,8 +88,6 @@ public class MarketService {
                 .getKey();
     }
 
-    //[3] Przygotuj zestawienie produktów, które posiada informacje na temat
-    //produktu oraz ile razy był wybierany przez wszystkich klientów.
     public Map<Product, Long> showProductsStatistics() {
         return purchases.entrySet().stream()
                 .flatMap(e -> e.getValue().stream())
@@ -98,7 +95,6 @@ public class MarketService {
                         Collectors.counting()));
     }
 
-    //[2] Wyświetl dane klienta, który zakupił produkty o łącznie najwyższej wartości.
     public Client whoSpentTheMost() {
         return purchases.entrySet().stream()
                 .collect(Collectors.toMap(
@@ -111,7 +107,6 @@ public class MarketService {
                 .getKey();
     }
 
-    //[1] Wyświetl dane klienta, który zakupił najwięcej produktów.
     public Client whoBoughtTheMost() {
         return purchases.entrySet().stream()
                 .collect(Collectors.toMap(
