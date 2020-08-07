@@ -6,6 +6,7 @@
   <artifactId>ui</artifactId>
   <version>1.0</version>
   <properties>
+    <java.version>14</java.version>
     <maven.compiler.source>14</maven.compiler.source>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <maven.assembly.plugin.version>3.2.0</maven.assembly.plugin.version>

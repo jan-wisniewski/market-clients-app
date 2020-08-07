@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MenuService {
 
-    private final MarketService marketService;
+    private final MarketService MARKET_SERVICE;
 
     public void mainMenu() {
         while (true) {
@@ -47,39 +47,39 @@ public class MenuService {
     }
 
     private void option9() {
-        System.out.println(toJson(marketService.showCategoriesStatistics()));
+        System.out.println(toJson(MARKET_SERVICE.showCategoriesStatistics()));
     }
 
     private void option8() {
-        System.out.println(toJson(marketService.showMostOftenBoughtProduct()));
+        System.out.println(toJson(MARKET_SERVICE.showMostOftenBoughtProduct()));
     }
 
     private void option7() {
-        System.out.println(toJson(marketService.showLeastOftenBoughtProduct()));
+        System.out.println(toJson(MARKET_SERVICE.showLeastOftenBoughtProduct()));
     }
 
     private void option6() {
-        System.out.println(marketService.showProductsStatistics());
+        System.out.println(MARKET_SERVICE.showProductsStatistics());
     }
 
     private void option5() {
-        System.out.println(toJson(marketService.whoSpentTheMost()));
+        System.out.println(toJson(MARKET_SERVICE.whoSpentTheMost()));
     }
 
     private void option4() {
-        System.out.println(toJson(marketService.whoBoughtTheMost()));
+        System.out.println(toJson(MARKET_SERVICE.whoBoughtTheMost()));
     }
 
     private void option3() {
-        System.out.println(marketService.getPurchases());
+        System.out.println(MARKET_SERVICE.getPurchases());
     }
 
     private void option2() {
-        System.out.println(marketService.showAllProducts());
+        System.out.println(MARKET_SERVICE.showAllProducts());
     }
 
     private void option1() {
-        System.out.println(marketService.showAllClients());
+        System.out.println(MARKET_SERVICE.showAllClients());
     }
 
     private <T> String toJson(T item) {

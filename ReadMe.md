@@ -8,7 +8,7 @@
 
 ## Technologies
 #### General:
-* Java 13
+* Java 14
 * [Apache Maven](https://maven.apache.org/) 3.6.3 
 
 #### Dependencies:

@@ -13,7 +13,6 @@ public class ShowLeastOftenBoughtProductTests {
 
     private static final String PRODUCTS_FILENAME = "test-products.json";
     private static final String CLIENTS_FILENAME = "test-clients.json";
-    private static final String PREFERENCES_FILENAME = "preferences.txt";
     private static MarketService marketService;
 
     private Product timer, czapka, lopatka;
@@ -30,8 +29,7 @@ public class ShowLeastOftenBoughtProductTests {
         final String PATH = elements[0] + "src/test/java/resources/";
         final String[] FULL_PATH_PRODUCTS = (PATH + PRODUCTS_FILENAME).split("file:/");
         final String[] FULL_PATH_CLIENTS = (PATH + CLIENTS_FILENAME).split("file:/");
-        final String[] FULL_PATH_PREFERENCES = (PATH + PREFERENCES_FILENAME).split("file:/");
-        marketService = new MarketService(FULL_PATH_CLIENTS[1], FULL_PATH_PRODUCTS[1], FULL_PATH_PREFERENCES[1]);
+        marketService = new MarketService(FULL_PATH_CLIENTS[1], FULL_PATH_PRODUCTS[1]);
     }
 
     @BeforeEach

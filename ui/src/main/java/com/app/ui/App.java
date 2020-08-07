@@ -5,15 +5,10 @@ import com.app.ui.menu.MenuService;
 
 public class App {
     public static void main(String[] args) {
-        try {
-            final String CLIENTS = "./resources/data/clients.json";
-            final String PRODUCTS = "./resources/data/products.json";
-            final String PREFERENCES = "./resources/data/preferences.txt";
-            MarketService marketService = new MarketService(CLIENTS, PRODUCTS, PREFERENCES);
-            MenuService menuService = new MenuService(marketService);
-            menuService.mainMenu();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        final String CLIENTS = "./resources/data/clients.json";
+        final String PRODUCTS = "./resources/data/products.json";
+        MarketService marketService = new MarketService(CLIENTS, PRODUCTS);
+        MenuService menuService = new MenuService(marketService);
+        menuService.mainMenu();
     }
 }
